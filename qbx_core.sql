@@ -23,6 +23,9 @@ ALTER TABLE `players`
 ADD COLUMN `last_logged_out` TIMESTAMP NULL DEFAULT (NULL) AFTER `last_updated`,
 MODIFY COLUMN `name` VARCHAR(50) NOT NULL COLLATE utf8mb4_unicode_ci;
 
+ALTER TABLE `players`
+ADD UNIQUE KEY `license` (`license`);
+
 CREATE TABLE IF NOT EXISTS `bans` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) DEFAULT (NULL),
