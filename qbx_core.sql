@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `citizenid` VARCHAR(50) NOT NULL,
   `cid` INT(11) DEFAULT (NULL),
-  `license` VARCHAR(255) NOT NULL,
+  `license` VARCHAR(255) UNIQUE NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `money` TEXT NOT NULL,
   `charinfo` TEXT DEFAULT (NULL),
@@ -22,9 +22,6 @@ CREATE TABLE IF NOT EXISTS `players` (
 ALTER TABLE `players`
 ADD COLUMN `last_logged_out` TIMESTAMP NULL DEFAULT (NULL) AFTER `last_updated`,
 MODIFY COLUMN `name` VARCHAR(50) NOT NULL COLLATE utf8mb4_unicode_ci;
-
-ALTER TABLE `players`
-ADD UNIQUE KEY `license` (`license`);
 
 CREATE TABLE IF NOT EXISTS `bans` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
